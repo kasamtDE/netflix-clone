@@ -1,0 +1,42 @@
+form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+form button span{
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+form button:hover{
+    cursor: pointer;
+}
+form button span::after{
+    content: ">";
+    margin: 0 0 0 1rem;
+}
+.form-container p{
+    color: white;
+    font-size: 1.25rem;
+    
+}
+.email-button{
+    padding:1rem 2rem;
+    color: white;
+    background: red;
+    outline: none;
+    border: none;
+}
+.email-input{
+    margin-bottom: 1.5rem;
+}
+@media screen and (min-width:950px) {
+    form{
+        flex-direction: row;
+    }
+    .email-input{
+        margin-bottom: 0;
+    }
+    
+}
