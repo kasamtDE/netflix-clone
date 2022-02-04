@@ -12,13 +12,12 @@ import Register from "./components/Register/Register.js";
 import Browse from "./components/Browse/Browse.js";
 import Row from "./components/Row/Row.js";
 function App() {
-  console.log(process.env.REACT_APP_FIREBASE_API_KEY)
   const [isEnglish,setIsEnglish] = useState(false)
 
   const [registerUser,setRegisterUser] = useState({registerEmail:"",registerPassword:""})
   const [loginUser,setLoginUser] = useState({loginEmail:"",loginPassword:""})
-
   const [user,setUser] = useState({})
+  const [errors,setErrors] = useState({})
 
   onAuthStateChanged(auth,(currentUser) =>{
     setUser(currentUser)
@@ -31,11 +30,9 @@ function App() {
     const {registerEmail,registerPassword} = registerUser
     try{
       const user = await createUserWithEmailAndPassword(auth,registerEmail,registerPassword)
-
     }
     catch (error){
       console.log(error.message)
-      alert(error.message)
     }
     setRegisterUser({registerEmail:"",registerPassword:""})
 
@@ -49,16 +46,16 @@ function App() {
       const user = await signInWithEmailAndPassword(auth,loginEmail,loginPassword)
     }
     catch (error){
-      alert(error.message)
-      return error.message
+      
     }
-    setLoginUser({loginEmail:"",loginPassword:""})
+ 
   }
   const logout = async (e) =>{
     e.preventDefault()
 
     signOut(auth)
   }
+  useEffect(() =>{},[login])
   
   useEffect(() =>{
     const checkUrl = window.location.pathname
@@ -80,7 +77,7 @@ function App() {
         <Fragment>
           <Routes>
               <Route element={<Header />} />
-              <Route path="/signup" element={<Register />}/>
+              <Route path="/signup" element={auth?.currentUser ? <Navigate to = "/browse" /> : <Register /> }/>
               <Route path="/" element={<Home />} />
               <Route path="/en" element={<Home />} />
               <Route path="/login" element={auth?.currentUser ? <Navigate to = "/browse" /> : <Login /> } />
