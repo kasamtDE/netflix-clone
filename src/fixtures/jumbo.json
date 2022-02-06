@@ -1,0 +1,47 @@
+[
+    {
+      "id": 1,
+      "title": "Auf Ihrem Fernseher",
+      "subTitle": "Streamen Sie mit Smart-TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray-Player u. v. m.",
+      "titleEnglish":"Enjoy on your TV.",
+      "subTitleEnglish":"Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more.",
+      "image":"https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/tv.png",
+      "video": "https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-tv-0819.m4v",
+      "alt": "Tiger King on Netflix",
+      "direction": "row"
+    },
+    {
+      "id": 2,
+      "title": "Serien herunterladen und offline genießen",
+      "subTitle": "Lieblingstitel ganz leicht speichern und jederzeit ansehen",
+      "titleEnglish":"Download your shows to watch offline.",
+      "subTitleEnglish":"Save your favorites easily and always have something to watch.",
+      "image": "../../images/misc/home-mobile.jpg",
+      "miniImage":"https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/boxshot.png",
+      "after":"https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/download-icon.gif",
+      "alt": "Watch on mobile",
+      "direction": "row-reverse"
+    },
+    {
+      "id":3,
+      "title":"Auf allen Geräten",
+      "titleEnglish":"Watch everywhere.",
+      "subTitleEnglish":"Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV without paying more.",
+      "image":"https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/device-pile.png",
+      "video":"https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-devices.m4v",
+      "subTitle":"Sie können unbegrenzt Filme und Serien auf Ihrem Smartphone, Tablet, Laptop und Fernseher ansehen – ohne Extragebühren.",
+      "direction": "row"
+
+    },
+    {
+      "id": 4,
+      "title": "Profile für Kinder erstellen.",
+      "titleEnglish":"Create profiles for kids.",
+      "subTitleEnglish":"Send kids on adventures with their favorite characters in a space made just for them—free with your membership.",
+      "subTitle": "Schicken Sie Kinder auf Abenteuer mit ihren Lieblingsfiguren in einem speziell auf ihre Bedürfnisse abgestimmten Kids-Bereich, der ohne Aufpreis in Ihrer Mitgliedschaft inbegriffen ist.",
+      "image": "https://occ-0-2418-3211.1.nflxso.net/dnm/api/v6/19OhWN2dO19C9txTON9tvTFtefw/AAAABbkn0DwnEDJpU7nogn95ul9Ns0jFCT70EVis_nm3FdZ-FEs1udFxaJaMhTyH2MQ5njjTLmXKLaAMSXRv_6OPBR3AAQ6s.png?r=244",
+      "alt": "Money Heist on Netflix",
+      "direction": "row-reverse"
+    }
+  ]
+  
