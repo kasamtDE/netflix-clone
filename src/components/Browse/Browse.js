@@ -4,11 +4,10 @@ import Row from '../Row/Row';
 import "./Browse.css"
 import user1 from "./users/1.png"
 import {fetchUrl} from "../../requests.js"
-import {useAuthContext} from "../Contexts/UserAuthContext.js"
-import Banner from '../Banner/Banner';
+import {UserAuthContext} from "../Contexts/UserAuthContext.js"
 function Browse() {
     
-    const {logout,user} = useAuthContext()
+    const {logout,user} = useContext(UserAuthContext)
 
     const openAccount = () =>{
         const getImageContainer = document.querySelector(".user-account-container")
@@ -28,7 +27,6 @@ function Browse() {
           </div>
 
       </div>
-      <Banner />
       <Row title = "Trending Movies" movie = {fetchTrendingMovies} />
       <Row title = "Top Rated Movies" movie = {fetchTopRatedMovies} />
       <Row title = "Popular Movies" movie = {fetchPopularMovies} />

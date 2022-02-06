@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Login.css";
 import logo from "../Header/logo.svg";
-import { useAuthContext } from "../Contexts/UserAuthContext";
+import { UserAuthContext } from "../Contexts/UserAuthContext";
 import Footer from "../Footer/Footer";
 
 function Login() {
@@ -10,12 +10,8 @@ function Login() {
     loginUser,
     setLoginUser,
     login,
-    user
-  } = useAuthContext();
+  } = useContext(UserAuthContext);
 
-  useEffect(() =>{
-    console.log(user)
-  })
   return (
     <div className="login-container">
       <div className="login-header-container">

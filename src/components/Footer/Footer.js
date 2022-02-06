@@ -1,5 +1,4 @@
 import React, { useState ,useContext} from 'react';
-import { auth } from '../../firebase';
 import "./Footer.css"
 
 function Footer() {
@@ -7,7 +6,7 @@ function Footer() {
   return (
   <div className='footer-container'>
       <div className='questions'>Questions? Call 0800-000-7969</div>
-       <p> current user is : { auth?.currentUser?.email}</p>
+
       <div className='footer-container-inner'>
           <ul>
               <li> <a href='https://help.netflix.com/tr/node/412'>FAQ</a> </li>

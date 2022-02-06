@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import logo from "../Header/logo.svg";
-import { useAuthContext } from "../Contexts/UserAuthContext";
+import { UserAuthContext } from "../Contexts/UserAuthContext";
 import Footer from "../Footer/Footer";
 import "./Register.css";
 
@@ -9,9 +9,7 @@ function Register() {
     registerUser,
     setRegisterUser,
     register,
-  } = useAuthContext();
-
-  
+  } = useContext(UserAuthContext);
 
   return (
     <>

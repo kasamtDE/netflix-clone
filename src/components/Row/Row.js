@@ -69,6 +69,8 @@ function Row({ title, movie }) {
         onMouseMove={onMouseMove}>
         {movies.length> 2 ? movies.map((singleMovie) =>{
           const image = `https://image.tmdb.org/t/p/w500${singleMovie.poster_path}`
+
+           console.log(singleMovie.name)
           return(
             <div className="row-image-container"> 
               <img src={image} className="row-movie-image" draggable={false} onClick={() =>getMovies(singleMovie)}/>
