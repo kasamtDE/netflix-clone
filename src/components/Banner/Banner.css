@@ -1,0 +1,83 @@
+.joker-container{
+   height: 550px;
+   width: 100%; 
+   
+}
+.joker-image{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+}
+.joker-text-container{
+    position: relative;
+    height: 100%;
+    display: flex;
+    padding-top: 4rem;
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 700;
+    z-index: 100;
+}
+.joker-text-container .joker-text{
+    height: 500px;
+    font-size: 20px;
+
+}
+.joker-text .more-info{
+    margin-left: 0.5rem;
+    margin-bottom: 2.5rem;
+}
+.joker-text h1 {
+    text-align: center;
+}
+.joker-text .more-info span{
+    margin: 0 0.25rem;
+}
+@media screen and (min-width:700px) {
+    .joker-container{
+        height: 700px;
+    }
+    .joker-image{
+        height: 800px;
+    }
+    .joker-text-container .joker-text{
+        height: 500px;
+        max-width: 600px;
+        margin: 0 auto;
+        font-size: 24px;
+    }
+
+    
+}
+@media screen and (min-width:1000px) {
+    .joker-container{
+        height: 800px;
+    }
+    .joker-text-container{
+        padding-left: 4rem;
+        font-size: 26px;
+    }
+    .joker-text-container .joker-text{
+        max-width: 100%;
+        width: 100%;
+    }
+    .joker-text-container .joker-text h1{
+        text-align: left;
+
+    }
+    .joker-overview-text{
+        max-width: 600px;
+    }
+
+    
+}
+
+@media screen and (min-width:2560px) {
+    .joker-container{
+        height: 1500px;
+    }
+    .joker-image{
+        height: 1600px;
+    }
+    
+}
