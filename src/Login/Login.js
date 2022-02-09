@@ -1,33 +1,45 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState, useRef} from "react";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import logo from "../Header/logo.svg";
-import { UserAuthContext } from "../Contexts/UserAuthContext";
+import { useAuthContext } from "../Contexts/UserAuthContext";
 import Footer from "../Footer/Footer";
 
+
 function Login() {
+
+  const navigate = useNavigate()
+  const goToHome = () =>{
+    navigate("/")
+  }
   const {
     registerUser,
     loginUser,
     setLoginUser,
     login,
-  } = useContext(UserAuthContext);
+    user,
+    loading,
+    errors,
+  } = useAuthContext();
 
   return (
     <div className="login-container">
       <div className="login-header-container">
-        <a href="/">
+        <div onClick={goToHome}>
           <img className="login-header-logo" src={logo} />
-        </a>
+        </div>
       </div>
+      
       <div className="login-overlay"></div>
       <div className="login-background"></div>
       <div className="login-main-container">
         <div className="login-outer-container ">
         <div className="login-inner-container ">
-          <h1>Einloggen</h1>
+          <h1>Sign In</h1>
+          {errors.length > 1 ? <div className="error-message">{errors}</div> : ""}
           <form className="form"> 
             <input
-              placeholder="E-mail Adresse oder Telefonnummer"
+              placeholder="Email"
               type="email"
               onChange={(e) =>
                 setLoginUser({
@@ -46,13 +58,13 @@ function Login() {
                 })
               }
             />
-            <button className="login" onClick={login}>
+            <button className="login" disabled={loading} onClick={login}>
               {" "}
-              Einloggen
+              Sign In
             </button>
           </form>
           <p className="register-text">
-            Neu bei Netflix? <a href="/"> Jetzt registrieren</a>
+          New to Netflix? <a href="/"> Sign up now.</a>
           </p>
         </div>
         </div>
@@ -60,5 +72,4 @@ function Login() {
     </div>
   );
 }
-
 export default Login;
