@@ -4,17 +4,17 @@ import Row from '../Row/Row';
 import "./Browse.css"
 import user1 from "./users/1.png"
 import {fetchUrl} from "../../requests.js"
-import {UserAuthContext} from "../Contexts/UserAuthContext.js"
-import Banner from '../Banner/Banner';
+import {useAuthContext} from "../Contexts/UserAuthContext.js"
+import Hero from '../Hero/Hero';
 function Browse() {
     
-    const {logout,user} = useContext(UserAuthContext)
+    const {logout,user} = useAuthContext()
 
     const openAccount = () =>{
         const getImageContainer = document.querySelector(".user-account-container")
         getImageContainer.classList.toggle("open")
     }
-    const {fetchTrendingMovies,fetchTopRatedMovies,fetchPopularMovies,fetchTrendingSeries,fetchAnimationMovies} = fetchUrl
+    const {fetchTrendingMovies,fetchTopRatedMovies,fetchPopularMovies,fetchScienceFictionMovies,fetchAnimationMovies} = fetchUrl
   
   return <div className='browse-container'>
       <div className='browse-header-container'>
@@ -28,12 +28,12 @@ function Browse() {
           </div>
 
       </div>
-      <Banner />
+      <Hero/>
       <Row title = "Trending Movies" movie = {fetchTrendingMovies} />
       <Row title = "Top Rated Movies" movie = {fetchTopRatedMovies} />
       <Row title = "Popular Movies" movie = {fetchPopularMovies} />
       <Row title = "Animation Movies" movie = {fetchAnimationMovies} />
-      <Row title = "Trending Series" movie = {fetchTrendingSeries} />
+      <Row title = "Science Fiction Movies" movie = {fetchScienceFictionMovies} />
 
   </div>;
 }

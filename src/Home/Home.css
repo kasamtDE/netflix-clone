@@ -148,13 +148,13 @@ img{
 }
 .animation-box-container .animation-text{
     margin: 0 1rem;
+    padding-top: 2rem;
 }
 .animation-text h3{
     color: white;
 }
 .animation-text p{
     color: rgb(0, 0, 214);
-    margin-top: -0.8rem;
 }
 .animation-box-container .animation-image{
     width: 50px;

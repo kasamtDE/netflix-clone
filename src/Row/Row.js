@@ -4,31 +4,18 @@ import movieTrailer from 'movie-trailer'
 import Youtube from "react-youtube"
 function Row({ title, movie }) {
   const [movies, setMovies] = useState([]);
-  const [mouseMoves, setMouseMoves] = useState({isScrolling: false,
-    clientX: 0,
-    scrollX: 0,})
   const [videoUrl,setVideoUrl] = useState("")
-
     const rowContainerRef = useRef()
 
-    const onMouseDown = e => {
-      setMouseMoves({ ...mouseMoves, isScrolling: true, 
-       clientX: e.clientX });
-    };
-  
-    const onMouseUp = () => {
-      setMouseMoves({ ...mouseMoves, isScrolling: false, });
-    };
-  
-   const onMouseMove = e => {
-      const { clientX, scrollX } = mouseMoves;
+    const arrowClick = (direction) =>{
 
-      if (mouseMoves.isScrolling) {
-        rowContainerRef.current.scrollLeft = scrollX - e.clientX + clientX;
-        mouseMoves.scrollX = scrollX - e.clientX + clientX;
-        mouseMoves.clientX = e.clientX;
+      if(direction === "left"){
+        rowContainerRef.current.scrollLeft-= window.innerWidth
+      }else{
+        rowContainerRef.current.scrollLeft+= window.innerWidth
       }
-    };
+      
+    }
 
     const getMovies = (movieName) =>{
       const getTitle = movieName?.title ? movieName.title : movieName.name
@@ -56,6 +43,7 @@ function Row({ title, movie }) {
 
 
 
+
  const videoStyles = {
     width:"100%",
     height:"450px",
@@ -64,19 +52,17 @@ function Row({ title, movie }) {
     <div className="row-main-container">
       <h1 style={{color:"white"}}> {title}</h1>
 
-      <div className="row-container" ref={rowContainerRef} onMouseDown={onMouseDown}
-        onMouseUp={onMouseUp}
-        onMouseMove={onMouseMove}>
+      <div className="row-container" ref={rowContainerRef}>
+        <div className="row-container-arrow left" onClick={(e) =>arrowClick("left")}></div>
         {movies.length> 2 ? movies.map((singleMovie) =>{
           const image = `https://image.tmdb.org/t/p/w500${singleMovie.poster_path}`
-
-           console.log(singleMovie.name)
           return(
-            <div className="row-image-container"> 
+            <div key={singleMovie.id} className="row-image-container"> 
               <img src={image} className="row-movie-image" draggable={false} onClick={() =>getMovies(singleMovie)}/>
             </div>
           )
         }):""}
+        <div className="row-container-arrow right" onClick={(e) =>arrowClick("right")}></div>
       </div>
       {videoUrl ? < Youtube videoId={videoUrl} opts={videoStyles} /> : ""}
 
@@ -85,3 +71,6 @@ function Row({ title, movie }) {
 }
 
 export default Row;
+
+
+
