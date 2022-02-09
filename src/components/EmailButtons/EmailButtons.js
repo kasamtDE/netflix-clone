@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import "./EmailButtons.css"
 import  {useNavigate}  from 'react-router-dom'
+import {useAuthContext} from "../Contexts/UserAuthContext.js"
 
 function EmailButtons() {
   let navigate = useNavigate()
+
+  const {loading,setLoading} = useAuthContext()
 
   const [emailValue , setEmailValue] = useState("")
   const checkUrl = window.location.pathname.includes("/en");

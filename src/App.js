@@ -44,8 +44,8 @@ function App() {
                     auth?.currentUser ? <Navigate to="/browse" /> : <Register />
                   }
                 />
-                <Route path="/" element={<Home />} />
-                <Route path="/en" element={<Home />} />
+                <Route exact path="/" element={auth?.currentUser ? <Navigate to="/browse" /> : <Home />} />
+                <Route exact path="/en" element={auth?.currentUser ? <Navigate to="/browse" /> : <Home />} />
                 <Route
                   path="/login"
                   element={

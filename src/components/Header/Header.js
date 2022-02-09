@@ -9,8 +9,8 @@ export default function Header() {
   let navigate = useNavigate();
   const checkUrl = window.location.pathname.includes("/en");
 
-  function handleChange(value) {
-    navigate(`${value}`);
+  function goToLogin() {
+    navigate(`/login`);
   }
 
   return (
@@ -23,8 +23,7 @@ export default function Header() {
           <LanguageButton />
           <button
             className="login"
-            value={"/login"}
-            onClick={(e) => handleChange(e.target.value)}
+            onClick={goToLogin}
           >
            {!checkUrl ? <span>Einloggen</span> : <span>Login</span> } 
           </button>
