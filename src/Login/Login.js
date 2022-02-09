@@ -25,8 +25,8 @@ function Login() {
   return (
     <div className="login-container">
       <div className="login-header-container">
-        <div onClick={goToHome}>
-          <img className="login-header-logo" src={logo} />
+        <div >
+          <img className="login-header-logo" src={logo} onClick={goToHome} />
         </div>
       </div>
       
