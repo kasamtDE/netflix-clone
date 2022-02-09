@@ -11,6 +11,8 @@ button:hover{
     padding: 1.5rem;
     display: flex;
     justify-content: space-between;
+    position: relative;
+    z-index: 1000;
 }
 .browse-header-container .browse-logo{
     height: 50px;

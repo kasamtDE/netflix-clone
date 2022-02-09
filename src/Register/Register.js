@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import logo from "../Header/logo.svg";
-import { UserAuthContext } from "../Contexts/UserAuthContext";
+import { useAuthContext } from "../Contexts/UserAuthContext";
 import Footer from "../Footer/Footer";
 import "./Register.css";
 
@@ -9,7 +9,18 @@ function Register() {
     registerUser,
     setRegisterUser,
     register,
-  } = useContext(UserAuthContext);
+    loading,
+    errors
+  } = useAuthContext();
+
+  useEffect(() =>{
+    const getValue =localStorage.getItem("email")
+    const getEmail = document.querySelector(".email-input")
+    if(getValue.length >0){
+      getEmail.value = getValue
+    }
+
+  },[])
 
   return (
     <>
@@ -27,10 +38,12 @@ function Register() {
           <div className="login-outer-container register-outer-container">
             <div className="login-inner-container register-inner-container">
               <h1>Create a password to start your membership</h1>
+              {errors.length > 1 ? <div className="error-message">{errors}</div> : ""}
               <form className="form">
                 <input
                   placeholder="E-mail Adresse oder Telefonnummer"
                   type="email"
+                  className="email-input"
                   onChange={(e) =>
                     setRegisterUser({
                       ...registerUser,
@@ -48,7 +61,7 @@ function Register() {
                     })
                   }
                 />
-                <button className="login" onClick={register}>
+                <button className="login" disabled={loading} onClick={register}>
                   {" "}
                   Sign Up
                 </button>

@@ -7,11 +7,10 @@ import LanguageButton from "../languageButton/LanguageButton";
 
 export default function Header() {
   let navigate = useNavigate();
+  const checkUrl = window.location.pathname.includes("/en");
 
-  const { isEnglish } = useContext(LanguageContext);
-
-  function handleChange(value) {
-    navigate(`${value}`);
+  function goToLogin() {
+    navigate(`/login`);
   }
 
   return (
@@ -24,10 +23,9 @@ export default function Header() {
           <LanguageButton />
           <button
             className="login"
-            value={"/login"}
-            onClick={(e) => handleChange(e.target.value)}
+            onClick={goToLogin}
           >
-            Einloggen{" "}
+           {!checkUrl ? <span>Einloggen</span> : <span>Login</span> } 
           </button>
         </div>
       </div>
