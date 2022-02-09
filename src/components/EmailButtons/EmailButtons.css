@@ -31,6 +31,8 @@ form button span::after{
 .email-input{
     margin-bottom: 1.5rem;
 }
+
+
 @media screen and (min-width:950px) {
     form{
         flex-direction: row;

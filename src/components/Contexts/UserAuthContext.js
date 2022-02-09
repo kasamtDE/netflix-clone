@@ -20,16 +20,17 @@ export default function UserAuthContextProvider({ children }) {
     loginPassword: "",
   });
   const [user, setUser] = useState({});
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState("");
+  const [loading,setLoading] = useState(false)
 
   onAuthStateChanged(auth, (currentUser) => {
     setUser(currentUser);
   });
 
- 
 
   const register = async (e) => {
     e.preventDefault();
+    setLoading(true)
 
     const { registerEmail, registerPassword } = registerUser;
     try {
@@ -38,29 +39,34 @@ export default function UserAuthContextProvider({ children }) {
         registerEmail,
         registerPassword
       );
+      setLoading(false)
+      setErrors("")
     } catch (error) {
-      console.log(error)
+      setLoading(false)
+      setErrors(error.message)
+      console.log(error);
     }
   };
- 
+
   const login = async (e) => {
+    setLoading(true)
     e.preventDefault();
 
     const { loginEmail, loginPassword } = loginUser;
-    signInWithEmailAndPassword(auth, loginEmail, loginPassword);
-    try {
-      const user = await signInWithEmailAndPassword(
-        auth,
-        loginEmail,
-        loginPassword
-      );
-    } catch (err) {
-      setLoginUser({ loginEmail: "", loginPassword: "" });
-    }
+   return signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+    .then(() =>{
+      setLoading(false)
+      setErrors("")
+    })
+    .catch((err) => {
+        setLoading(false)
+        setErrors(err.message)
+        console.log(err)  
+      });
   };
   const logout = async (e) => {
     e.preventDefault();
-
+    setLoginUser({loginEmail:"",loginPassword:""})
     await signOut(auth);
   };
 
@@ -76,6 +82,9 @@ export default function UserAuthContextProvider({ children }) {
         setRegisterUser,
         user,
         setUser,
+        loading,
+        setLoading,
+        errors
       }}
     >
       {children}

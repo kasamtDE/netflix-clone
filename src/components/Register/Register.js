@@ -9,6 +9,8 @@ function Register() {
     registerUser,
     setRegisterUser,
     register,
+    loading,
+    errors
   } = useAuthContext();
 
   useEffect(() =>{
@@ -36,6 +38,7 @@ function Register() {
           <div className="login-outer-container register-outer-container">
             <div className="login-inner-container register-inner-container">
               <h1>Create a password to start your membership</h1>
+              {errors.length > 1 ? <div className="error-message">{errors}</div> : ""}
               <form className="form">
                 <input
                   placeholder="E-mail Adresse oder Telefonnummer"
@@ -58,7 +61,7 @@ function Register() {
                     })
                   }
                 />
-                <button className="login" onClick={register}>
+                <button className="login" disabled={loading} onClick={register}>
                   {" "}
                   Sign Up
                 </button>

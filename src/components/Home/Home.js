@@ -121,7 +121,7 @@ export default function Home() {
                     <img className="mini-image" src={miniImage} />
                     <div className="animation-text">
                       <h3> Stranger Things </h3>
-                      <p> Download Läuft... </p>
+                      {!checkUrl ? <p> Download Läuft... </p> : <p>Downloading...</p>}
                     </div>
                     <img className="animation-image" src={after} />
                   </div>
@@ -136,7 +136,7 @@ export default function Home() {
           className="section-container-inner"
           style={{ flexDirection: "column" }}
         >
-          <h1 className="faq-title">Häufig gestellte Fragen</h1>
+          <h1 className="faq-title">{!checkUrl ? <span>Häufig gestellte Fragen</span> : <span>Frequently Asked Questions</span>}</h1>
           <ul className="faq-container">
             {faqs.map((faq) => {
               let { header, body, headerEnglish, bodyEnglish } = faq;
