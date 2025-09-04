@@ -9,17 +9,15 @@ import {
   Navigate,
 } from "react-router-dom";
 import { LanguageContext } from "./components/Contexts/LanguageContext.js";
-import UserAuthContextProvider, {
+import {
   useAuthContext,
 } from "./components/Contexts/UserAuthContext.js";
 import Login from "./components/Login/Login.js";
 import { auth } from "./firebase";
 import Register from "./components/Register/Register.js";
 import Browse from "./components/Browse/Browse.js";
-import Row from "./components/Row/Row.js";
 function App() {
   const [isEnglish, setIsEnglish] = useState(false);
-  const { setUser } = useAuthContext();
 
   useEffect(() => {
     const checkUrl = window.location.pathname;
@@ -37,15 +35,24 @@ function App() {
           <Router>
             <Fragment>
               <Routes>
-                <Route element={<Header />} />
                 <Route
                   path="/signup"
                   element={
                     auth?.currentUser ? <Navigate to="/browse" /> : <Register />
                   }
                 />
-                <Route exact path="/" element={auth?.currentUser ? <Navigate to="/browse" /> : <Home />} />
-                <Route exact path="/en" element={auth?.currentUser ? <Navigate to="/browse" /> : <Home />} />
+                <Route exact path="/" element={
+                  <div>
+                    <Header />
+                    {auth?.currentUser ? <Navigate to="/browse" /> : <Home />}
+                  </div>
+                } />
+                <Route exact path="/en" element={
+                  <div>
+                    <Header />
+                    {auth?.currentUser ? <Navigate to="/browse" /> : <Home />}
+                  </div>
+                } />
                 <Route
                   path="/login"
                   element={

@@ -35,11 +35,19 @@ function Row({ title, movie }) {
 
     }
 
-  useEffect(async () => {
-    await fetch(movie)
-      .then((response) => response.json())
-      .then((data) => setMovies(data.results));
-  }, []);
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const response = await fetch(movie);
+        const data = await response.json();
+        setMovies(data.results);
+      } catch (error) {
+        console.error('Error fetching movies:', error);
+      }
+    };
+    
+    fetchMovies();
+  }, [movie]);
 
 
 

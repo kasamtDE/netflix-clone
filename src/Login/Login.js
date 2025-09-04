@@ -37,7 +37,7 @@ function Login() {
         <div className="login-inner-container ">
           <h1>Sign In</h1>
           {errors.length > 1 ? <div className="error-message">{errors}</div> : ""}
-          <form className="form"> 
+          <form className="form" onSubmit={login}> 
             <input
               placeholder="Email"
               type="email"
@@ -58,7 +58,7 @@ function Login() {
                 })
               }
             />
-            <button className="login" disabled={loading} onClick={login}>
+            <button className="login" type="submit" disabled={loading}>
               {" "}
               Sign In
             </button>

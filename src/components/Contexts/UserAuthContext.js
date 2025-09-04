@@ -23,9 +23,13 @@ export default function UserAuthContextProvider({ children }) {
   const [errors, setErrors] = useState("");
   const [loading,setLoading] = useState(false)
 
-  onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-  });
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+
+    return () => unsubscribe();
+  }, []);
 
 
   const register = async (e) => {
