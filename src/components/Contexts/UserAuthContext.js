@@ -35,8 +35,23 @@ export default function UserAuthContextProvider({ children }) {
   const register = async (e) => {
     e.preventDefault();
     setLoading(true)
+    setErrors("");
 
     const { registerEmail, registerPassword } = registerUser;
+    
+    // Basic validation
+    if (!registerEmail || !registerPassword) {
+      setErrors("Please fill in all fields");
+      setLoading(false);
+      return;
+    }
+
+    if (registerPassword.length < 6) {
+      setErrors("Password must be at least 6 characters");
+      setLoading(false);
+      return;
+    }
+
     try {
       const checkUser = await createUserWithEmailAndPassword(
         auth,
@@ -45,28 +60,38 @@ export default function UserAuthContextProvider({ children }) {
       );
       setLoading(false)
       setErrors("")
+      console.log("Registration successful:", checkUser.user.email);
     } catch (error) {
       setLoading(false)
       setErrors(error.message)
-      console.log(error);
+      console.error("Registration error:", error);
     }
   };
 
   const login = async (e) => {
-    setLoading(true)
     e.preventDefault();
+    setLoading(true)
+    setErrors("");
 
     const { loginEmail, loginPassword } = loginUser;
-   return signInWithEmailAndPassword(auth, loginEmail, loginPassword)
-    .then(() =>{
+    
+    // Basic validation
+    if (!loginEmail || !loginPassword) {
+      setErrors("Please fill in all fields");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
       setLoading(false)
       setErrors("")
-    })
-    .catch((err) => {
-        setLoading(false)
-        setErrors(err.message)
-        console.log(err)  
-      });
+      console.log("Login successful:", userCredential.user.email);
+    } catch (err) {
+      setLoading(false)
+      setErrors(err.message)
+      console.error("Login error:", err);
+    }
   };
   const logout = async (e) => {
     e.preventDefault();

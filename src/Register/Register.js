@@ -1,17 +1,27 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import logo from "../Header/logo.svg";
 import { useAuthContext } from "../Contexts/UserAuthContext";
 import Footer from "../Footer/Footer";
 import "./Register.css";
 
 function Register() {
+  const navigate = useNavigate();
   const {
     registerUser,
     setRegisterUser,
     register,
+    user,
     loading,
     errors
   } = useAuthContext();
+
+  // Navigate to browse page after successful registration
+  useEffect(() => {
+    if (user && user.email) {
+      navigate("/browse");
+    }
+  }, [user, navigate]);
 
   useEffect(() =>{
     const getValue =localStorage.getItem("email")
@@ -39,7 +49,7 @@ function Register() {
             <div className="login-inner-container register-inner-container">
               <h1>Create a password to start your membership</h1>
               {errors.length > 1 ? <div className="error-message">{errors}</div> : ""}
-              <form className="form">
+              <form className="form" onSubmit={register}>
                 <input
                   placeholder="E-mail Adresse oder Telefonnummer"
                   type="email"
@@ -61,7 +71,7 @@ function Register() {
                     })
                   }
                 />
-                <button className="login" disabled={loading} onClick={register}>
+                <button className="login" type="submit" disabled={loading}>
                   {" "}
                   Sign Up
                 </button>

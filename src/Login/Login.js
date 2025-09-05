@@ -22,6 +22,13 @@ function Login() {
     errors,
   } = useAuthContext();
 
+  // Navigate to browse page after successful login
+  useEffect(() => {
+    if (user && user.email) {
+      navigate("/browse");
+    }
+  }, [user, navigate]);
+
   return (
     <div className="login-container">
       <div className="login-header-container">

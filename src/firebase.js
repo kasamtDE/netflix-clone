@@ -1,6 +1,16 @@
 import { getAuth } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 
+// Check if Firebase environment variables are set
+const hasFirebaseConfig = process.env.REACT_APP_FIREBASE_API_KEY && 
+                         process.env.REACT_APP_AUTH_DOMAIN && 
+                         process.env.REACT_APP_PROJECT_ID;
+
+if (!hasFirebaseConfig) {
+  console.warn("⚠️ Firebase environment variables not found. Authentication will not work.");
+  console.warn("Please set up your Firebase configuration in a .env file.");
+}
+
 const firebaseConfig = initializeApp({
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY || "demo-key",
   authDomain: process.env.REACT_APP_AUTH_DOMAIN || "demo-project.firebaseapp.com",
