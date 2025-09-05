@@ -9,13 +9,13 @@ import {
   Navigate,
 } from "react-router-dom";
 import { LanguageContext } from "./components/Contexts/LanguageContext.js";
-// Removed unused useAuthContext import
+import { useAuthContext } from "./components/Contexts/UserAuthContext.js";
 import Login from "./components/Login/Login.js";
-import { auth } from "./firebase";
 import Register from "./components/Register/Register.js";
 import Browse from "./components/Browse/Browse.js";
 function App() {
   const [isEnglish, setIsEnglish] = useState(false);
+  const { user } = useAuthContext();
 
   useEffect(() => {
     const checkUrl = window.location.pathname;
@@ -36,31 +36,31 @@ function App() {
                 <Route
                   path="/signup"
                   element={
-                    auth?.currentUser ? <Navigate to="/browse" /> : <Register />
+                    user ? <Navigate to="/browse" /> : <Register />
                   }
                 />
                 <Route exact path="/" element={
                   <div>
                     <Header />
-                    {auth?.currentUser ? <Navigate to="/browse" /> : <Home />}
+                    {user ? <Navigate to="/browse" /> : <Home />}
                   </div>
                 } />
                 <Route exact path="/en" element={
                   <div>
                     <Header />
-                    {auth?.currentUser ? <Navigate to="/browse" /> : <Home />}
+                    {user ? <Navigate to="/browse" /> : <Home />}
                   </div>
                 } />
                 <Route
                   path="/login"
                   element={
-                    auth?.currentUser ? <Navigate to="/browse" /> : <Login />
+                    user ? <Navigate to="/browse" /> : <Login />
                   }
                 />
                 <Route
                   path="/browse"
                   element={
-                    auth?.currentUser ? <Browse /> : <Navigate to="/login" />
+                    user ? <Browse /> : <Navigate to="/login" />
                   }
                 />
               </Routes>

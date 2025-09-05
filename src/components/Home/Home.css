@@ -62,7 +62,7 @@ input{
 .section-container-inner .text-container{
     color: white;
     width: 100%;
-    height: 100%;    
+    height: 100%;
 }
 .section-container-inner .text-container h1{
     font-size: 2.75rem;
@@ -78,6 +78,7 @@ input{
     position: relative;
     width: 100%;
     z-index: 2;
+    top: -30px;
 }
 img{
     max-width: 100%;
@@ -87,10 +88,10 @@ img{
 
 }
 .img-container.mini-image{
-    width: 100%;
-    height: 100%;
-    max-height: 250px;
+    height: 300px;
+    max-height: 300px;
     position: relative;
+    width: 100%;
 }
 .img-container.mini-image img{
     max-height: 200px;
@@ -123,10 +124,14 @@ img{
     width: 100%;
     max-width: 450px;
     height: 100%;
+    position: relative;
+    top: 40px;
 }
-.animation-container-stranger-things img{
+.animation-container-stranger-things .stranger-things{
     height: 350px;
     width: auto;
+    position: relative;
+    z-index: 1;
 }
 .animation-container-stranger-things .mini-image{
     width: 50px;
@@ -141,7 +146,9 @@ img{
     position: absolute;
     width: 300px;
     height: 100px;
-    bottom: 20px;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 100;
     border-radius: 16px;
     border: 2px solid rgba(128, 128, 128, 0.733);
@@ -233,12 +240,32 @@ h1,p{
 h2{
     margin-bottom: 1rem;
 }
+
+/* Desktop positioning */
+@media only screen and (min-width: 1024px) {
+    .animation-container-stranger-things {
+        left: 100px;
+        top: 130px;
+    }
+    
+    /* Desktop-specific image positioning */
+    .img-container.mini-image {
+        left: -200px;
+    }
+    
+    /* Desktop text adjustments */
+    .section-container-inner .text-container {
+        margin-right: 150px;
+    }
+}
+
 @media only screen and (max-width: 1023px) {
     .section-container{
       padding: 0px;
     }
     .section-container-inner .text-container{
         padding-left: 3rem;
+        margin-right: 0;
     }
     .hero-container .text-container h1{
         font-size: 2.75rem ;
@@ -267,6 +294,10 @@ h2{
         padding:0;
         margin:0 auto;
         text-align: center;
+        width: 100%;
+    }
+    .section-container-inner .img-container{
+        width: 100%;
     }
     .section-container-inner img{
         max-width: 100%;
