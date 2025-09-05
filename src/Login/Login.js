@@ -12,6 +12,9 @@ function Login() {
   const goToHome = () =>{
     navigate("/")
   }
+  const goToSignup = () => {
+    navigate("/signup")
+  }
   const {
     registerUser,
     loginUser,
@@ -71,7 +74,7 @@ function Login() {
             </button>
           </form>
           <p className="register-text">
-          New to Netflix? <a href="/"> Sign up now.</a>
+          New to Netflix? <a href="#" onClick={(e) => { e.preventDefault(); goToSignup(); }}> Sign up now.</a>
           </p>
         </div>
         </div>
