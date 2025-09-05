@@ -1,6 +1,6 @@
 [build]
   publish = "build"
-  command = "npx browserslist@latest --update-db && CI=false npm run build"
+  command = "npx browserslist@latest --update-db && CI=false npm install --legacy-peer-deps && npm run build"
 
 [build.environment]
   NODE_VERSION = "18"
