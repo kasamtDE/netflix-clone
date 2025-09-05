@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./Banner.css";
 import joker from "./joker1.jpg"
 

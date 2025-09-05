@@ -1,9 +1,10 @@
 [build]
   publish = "build"
-  command = "npm run build"
+  command = "npx browserslist@latest --update-db && CI=false npm run build"
 
 [build.environment]
   NODE_VERSION = "18"
+  CI = "false"
 
 [[redirects]]
   from = "/*"

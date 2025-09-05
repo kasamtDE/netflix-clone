@@ -66,7 +66,7 @@ function Row({ title, movie }) {
           const image = `https://image.tmdb.org/t/p/w500${singleMovie.poster_path}`
           return(
             <div key={singleMovie.id} className="row-image-container"> 
-              <img src={image} className="row-movie-image" draggable={false} onClick={() =>getMovies(singleMovie)}/>
+              <img src={image} className="row-movie-image" draggable={false} onClick={() =>getMovies(singleMovie)} alt={singleMovie.title || singleMovie.name || "Movie poster"}/>
             </div>
           )
         }):""}

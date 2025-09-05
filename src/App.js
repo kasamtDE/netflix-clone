@@ -9,9 +9,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import { LanguageContext } from "./components/Contexts/LanguageContext.js";
-import {
-  useAuthContext,
-} from "./components/Contexts/UserAuthContext.js";
+// Removed unused useAuthContext import
 import Login from "./components/Login/Login.js";
 import { auth } from "./firebase";
 import Register from "./components/Register/Register.js";
